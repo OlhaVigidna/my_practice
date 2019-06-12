@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+home
+
+<form th:action="@{/saveDocument}" method="post" enctype="multipart/form-data">
+
+    <input type="file">
+
+    <input type="date">
+
+    <input type="submit" value="save">
+</form>
+
+</body>
+</html>
