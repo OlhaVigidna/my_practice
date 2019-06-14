@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.nio.file.Path;
@@ -30,7 +31,8 @@ public class DocumentDetails {
     int size;
     Tag tag;
     String type;
-    @Temporal(TemporalType.DATE)
+    @CreationTimestamp
+    @Temporal(value = TemporalType.DATE)
     Date creatingTime;
     Date activeUntil;
 

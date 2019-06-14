@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import org.springframework.stereotype.Component;
 
-import javax.xml.crypto.Data;
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,12 +13,15 @@ public class DateCustomerEditor extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         System.out.println(text);
+        Date date = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            Date parse = new SimpleDateFormat("yyyy/mm/dd").parse(text);
+             date = simpleDateFormat.parse(text);
         } catch (ParseException e) {
-            System.out.println("date exception");
+            System.out.println("Parse exception");
         }
 
+        setValue(date);
     }
 }
