@@ -3,14 +3,13 @@ package com.example.demo.models;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.nio.file.Path;
 import java.time.LocalTime;
+import java.util.Date;
 
 /**
  * Created by okten225 on 6/12/19.
@@ -19,6 +18,7 @@ import java.time.LocalTime;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DocumentDetails {
 
@@ -26,9 +26,12 @@ public class DocumentDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String path;
+    String documentName;
     int size;
     Tag tag;
-    LocalTime creatingTime;
-    LocalTime activeUntil;
+    String type;
+    @Temporal(TemporalType.DATE)
+    Date creatingTime;
+    Date activeUntil;
 
 }

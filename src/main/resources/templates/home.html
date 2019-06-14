@@ -8,14 +8,27 @@
 
 home
 
-<form th:action="@{/saveDocument}" method="post" enctype="multipart/form-data">
+<form th:action="@{/saveDocument}" method="post" enctype="multipart/form-data" th:object="${details}">
 
-    <input type="file">
+    <input type="file" name="file">
 
-    <input type="date">
+    <input name="date" type="datetime-local" th:field="*{activeUntil}">
+
+    <select name="tag" th:field="*{tag}">
+        <option th:each="tag : ${tags}" th:text="${tag.name()}" th:value="${tag.name()}">
+
+        </option>
+
+    </select>
+
 
     <input type="submit" value="save">
 </form>
+
+<!--<ul th:each="tag : ${tags}">-->
+<!--    <li th:text="tag.Class"></li>-->
+<!--</ul>-->
+
 
 </body>
 </html>
